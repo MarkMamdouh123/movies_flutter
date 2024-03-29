@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movies/DataBase/user.dart';
 
 class userFire {
-  static CollectionReference<User> getusercollection() {
+  static CollectionReference<User> getUserCollection() {
     var db = FirebaseFirestore.instance;
     var dbDoc = db.collection('user').withConverter<User>(
           fromFirestore: (snapshot, options) =>
@@ -13,8 +13,8 @@ class userFire {
   }
 
   static Future<User?> getuser() async {
-    var doc1 = getusercollection();
-    var docSnapShot = await doc1.doc("bf376d3cbdbf47c9a8c4bf1ef7d27f8a").get();
+    var doc1 = getUserCollection();
+    var docSnapShot = await doc1.doc().get();
     return docSnapShot.data();
   }
 }
